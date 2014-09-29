@@ -440,4 +440,12 @@ class admin extends Controller {
     }
     
 
+
+    public function armada (){
+        require 'application/controller/armada.php';
+        $armada = new Armada;
+        $armada->getall();
+                
+    }
+
 }
