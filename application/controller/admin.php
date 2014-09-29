@@ -447,5 +447,18 @@ class admin extends Controller {
         $armada->getall();
                 
     }
+    
+    public function armadanew(){
+    
+    require 'application/templates/admin/header.html';
+    require 'application/views/admin/armada/index.html';
+    require 'application/templates/admin/footer.html';
+    }
+    
+    public function savearmada(){
+        require 'application/controller/armada.php';
+        $armada = new Armada;
+        $armada->armadanew();
+    }
 
 }

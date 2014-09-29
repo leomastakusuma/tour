@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-final class Armada extends Controller{
+class Armada extends Controller{
     
     private $_model ='Armadamodels';
 
@@ -42,4 +42,10 @@ final class Armada extends Controller{
         }
     }
     
+    public function armadanew(){
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
+        
+    }
 }

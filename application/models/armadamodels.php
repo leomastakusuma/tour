@@ -24,10 +24,14 @@ class Armadamodels extends Models {
 	}
 
 	public function searcharmada($id){
-		$sql    = "SELECT * from {$this->table} WHERE id_armada= {$id}";
+        $sql    = "SELECT * from {$this->table} WHERE id_armada= {$id}";
         $query  = $this->db->prepare($sql);
         $query->execute();
         return $query->fetch();  
 	}
+        
+        public function editarmada(){
+            
+        }
 
 }
