@@ -1,0 +1,75 @@
+<script type="text/javascript" src="<?php echo URL;?>public/js/nicEdit-latest.js"></script>
+   <script type="text/javascript">
+       bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+   </script>
+   
+<div class="col-md-9 column">
+    <div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="panel panel-primary">
+         
+        
+            
+        <div class="panel-heading">Buku Tamu </div>
+            <div class="panel-body">
+                <?php require'application/views/bukutamu/databukutamu.html';?>   
+                <strong>*</strong>Wajib diisi<br><br>
+                
+                <!--isi content-->
+                <div class="row">
+                    <div class="center-block">
+                       <div class="col-xs-12 col-md-12">
+                           
+                           <?php
+                                if(!empty($errormsg)):
+                                    echo "<div class='alert alert-info' role='alert'>"; 
+                                    foreach($errormsg as $msg){
+                                        echo "<i class='fa fa-info-circle'></i> ".$msg.'<br>';
+                                    }
+                                    echo "</div>";
+                                endif;
+                           ?> 
+                           
+                           <br>
+                           <form class="form-horizontal" role="form" action="<?php echo URL?>bukutamu/save" method="post">
+                            <div class="form-group">
+                              <label for="nama" class="col-sm-2 control-label">Nama *</label>
+                              <div class="col-sm-5">
+                              <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="<?php if(!empty($form['nama'])) echo $form['nama'] ?>" >
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="email" class="col-sm-2 control-label">E-Mail</label>
+                              <div class="col-sm-7">
+                              <input type="email" class="form-control" id="notelpn" placeholder="E-mail" name="email" value="<?php if(!empty($form['email'])) echo $form['email'] ?>">
+                              </div>
+                            </div>   
+                               
+                            <div class="form-group">
+                              <label for="komentar" class="col-sm-2 control-label">Komentar *</label>
+                              <div class="col-sm-8">
+                              <textarea class="form-control" id="alamat" placeholder="Komentar" name="Komentar" rows="5"><?php if(!empty($form['Komentar'])) echo $form['Komentar'] ?></textarea>
+                              </div>
+                            </div>
+
+                            
+                            <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Simpan</button>
+                            </div>
+                            </div>
+                          </form>
+
+                      </div> 
+                   </div>
+                </div>
+                <!--Akhir isi Content-->
+
+        </div> 
+        </div>
+    </div>				
+    </div>
+</div>
+		
+			

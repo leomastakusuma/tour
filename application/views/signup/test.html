@@ -1,0 +1,79 @@
+
+<div class="row">
+    <div class="col-xs-12 col-md-5" >
+        <div class="panel panel-default">
+            <div class="panel-heading">Form Registrasi</div>
+            <div class="panel-body">
+                <div class="text-justify">
+            
+            <?php
+                if(!empty($flashmsg)):
+                echo "<div class='bg-danger'>";
+                echo '<h3>Error Message,</h3>';
+                    foreach($flashmsg as $error):
+                        echo $error .' !<br>';
+                    endforeach;
+                endif;
+                echo "</br>
+        </div>";
+            ?>
+            
+       <form action="<?php echo URL?>signup/save" method="post" >
+       <label for="nama">Nama</label>
+       <input type="text"  class="form-control" name="nama" placeholder="Nama" value="<?php if(!empty($form['nama'])) echo $form['nama'] ?>"><br>
+       <label for="alamat">Alamat</label>
+       <textarea class="form-control" placeholder="Alamat" name="alamat" ><?php if(!empty($form['alamat'])) echo $form['alamat'] ?></textarea><br>
+       <label for="ttl">Tanggal Lahir</label>
+       <input type="text"  id="datepicker" class="form-control" name="ttl" placeholder="1990-06-23" value="<?php if(!empty($form['ttl'])) echo $form['ttl'] ?>"><br>
+       <label for="Jenis Kelamin">Jenis Kelamin</label>
+       <select class="form-control" name='jeniskelamin'>
+        <option value="<?php if(!empty($form['jeniskelamin'])) {echo $form['jeniskelamin'];} else{ echo '--Pilih--';}?>"> 
+            <?php if(!empty($form['jeniskelamin'])) {
+                    echo $form['jeniskelamin'];}
+                    else{ echo ' -- Pilih --';}?> </option>
+        <option value="Laki-laki">Laki-Laki</option>
+        <option value="Perempuan">Perempuan</option>
+       </select>
+       <label for="email">Email</label>
+       <input type="text"  class="form-control" name="email" placeholder="Email" value="<?php if(!empty($form['email'])) echo $form['email'];?>"><br>
+       <label for="username">Username</label>
+       <input type="text"  class="form-control" name="username" placeholder="Username" value="<?php if(!empty($form['username'])) echo $form['username']?>"><br>
+       <label for="password">Password</label>
+       <input type="password"  class="form-control" name="password" placeholder="Password"value="<?php if(!empty($form['password'])) echo $form['password']?>"><br>
+       <br>
+       
+
+       <input type="submit" name="Simpan" value="Registrasi">
+       </form>
+            </div>
+    </div>
+    
+</div>
+    </div>
+</div>
+<script>
+			$(function()
+						{
+							$("#datepicker").datepicker({
+								changeMonth: true,
+								changeYear : true,
+								dateFormat : 'yy-dd-mm',
+								yearRange  : '-10:+10'	});
+						
+						}
+			)
+</script>
+<!-- memanggil datepicker sebagai tanggal akhir -->            
+<script>
+			$(function()
+						{
+							$("#datepicker2").datepicker({
+								changeMonth: true,
+								changeYear : true,
+								dateFormat : 'yy-dd-mm',
+								yearRange  : '-10:+10'	});
+						
+						}
+			)
+</script>
+<?php 

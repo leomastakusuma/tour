@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="col-md-9 column">
+    <div class="row clearfix">
+       <div class="col-md-12 column">
+            <table class="table ">
+<?php
+    if(!empty($data)){?>
+      <?php echo '<pre>';print_r($data);?>
+      
+  
+         <tr class="active">
+             <?php foreach($data as $key=>$row) : ?>
+             <?php echo "<td>".$key."</td>";?>
+             <?php endforeach;?>
+         </tr>
+        
+         
+      </table>
+     
+    <?php
+    }
+ ?>
+                                                </div>
+                                        </div>
+</div>
+
+ 

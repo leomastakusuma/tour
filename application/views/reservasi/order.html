@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--application/views/reservasi/order.html-->
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  
+  <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>public/datepicker/css/datepicker.css"> 
+  <script src="<?php echo URL; ?>public/datepicker/js/jquery-2.js"></script>
+  <script src="<?php echo URL; ?>public/datepicker/js/jquery-ui.js"></script>
+  
+  <script>
+   
+   $(function() {
+               $("#datepicker").datepicker({ dateFormat: "yy-mm-dd" }).val()
+       });
+  </script>
+
+
+
+<div class="col-md-9 column">
+    <div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="panel panel-primary">
+        <div class="panel-heading">Form Reservasi </div>
+            <div class="panel-body">
+                <strong>*</strong>Wajib diisi<br><br>
+                
+                <!--isi content-->
+                <div class="row">
+                    <div class="center-block">
+                       <div class="col-xs-12 col-md-12">
+                           
+                            <?php
+                                if(!empty($msg)):
+                                    foreach($msg as $message){
+                                        echo "<div class='alert alert-info' role='alert'> <i class='fa fa-info-circle'></i> ".$message."</div>";
+                                    }
+                                endif;
+                           ?> 
+                           
+                           <br>
+
+
+                           <?php if (!empty($getall))
+                                   {
+                                    ?>
+                                   
+
+                            <form class="form-horizontal" role="form" action="<?php echo URL?>reservasi/booking" method="post" enctype="multipart/form-data" >
+                            <input type="hidden" name ='id' value='<?php echo $getall->id_reservasi?>'>
+                            <div class="form-group">
+                            <label for="nama" class="col-sm-2 control-label">Tujuan</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" type="text" name="tujuan" id="tujuan" placeholder="Tujuan" value="<?php echo $getall->tujuan ?>" disabled="">
+                            </div>
+                            </div>
+                            
+                            <div class="form-group">
+                            <label for="durasi" class="col-sm-2 control-label">Durasi</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="durasi" id="tujuan" placeholder="Durasi" value="<?php echo $getall->durasi  ?>" disabled="">
+                            </div>
+                            </div>  
+                            
+                            <div class="form-group">
+                            <label for="paket" class="col-sm-2 control-label">Include Paket </label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="paket" placeholder="Include Paket" name="paket" cols="2" rows="15" disabled=""><?php echo $getall->include_paket ?></textarea>   
+                            </div>
+                            </div>    
+                                                         
+                            <div class="form-group">
+                            <label for="harga" class="col-sm-2 control-label">Harga </label>
+                            <div class="col-sm-3">
+                            <div class="input-group">
+                            <div class="input-group-addon">Rp</div>
+                            <input class="form-control" type="text" placeholder="Harga"  onkeypress="return isNumberKey(event)" id="harga" name="harga" value="<?php echo $getall->harga?>" disabled>
+                            </div>
+                            </div>
+                            </div>
+                           
+                                                        
+                            <div class="form-group">
+                            <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
+                            <div class="col-sm-4">
+                                <img src="<?php echo URL .'public/images/'.$getall->image?>" alt="IMAGE" class="img-rounded" width='100%'></p>
+                                
+                            
+                            </div>
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                            <label for="tanggal" class="col-sm-2 control-label">Tanggal Pesan*</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" name="tanggal" id="datepicker" placeholder="YY-MM-DD" value="<?php if(!empty($form['tanggal'])) echo $form['tanggal'];?>" >
+                            </div>
+                            </div> 
+                            
+                            <div class="form-group">
+                            <label for="Pesan" class="col-sm-2 control-label">Jumlah Pesan*</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" name="Pesan" id="pesan" placeholder="Pesan" value="<?php if(!empty($form['Pesan'])) echo $form['Pesan'];?>">
+                            </div>
+                            </div> 
+                            
+                            <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Pesan</button>
+                            <button type="reset" class="btn btn-default">Batal</button>
+                            </div>
+                            </div>
+                                                             
+                          </form>
+                                
+                           <?php }?> 
+                           
+                           
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                     
+              
+
+    

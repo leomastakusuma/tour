@@ -1,0 +1,21 @@
+<div class="col-md-9 column">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Berita</h2><hr>
+                    <?php if(!empty($getberita))?>
+                    <?php foreach($getberita as $row) :?>
+                    <h1><?php echo $row->judul_berita?></h1> 
+                    <span class="label label-default"><?php echo $row->tgl_berita ?> </span></br> 
+                    
+                    <br>
+                    <p class="text-justify"><?php echo $row->isi_berita?></p>
+                    <a href="<?php echo URL.'home/news/'.$row->id_berita?>" class="btn btn-success active btn-xs" type="button">Detail &raquo</a><span class="label label-default"></span><span class="label label-default"></span> <br /> <br /> <br /><hr>                    <?php endforeach;?>
+                </div> 
+            </div>
+        </div>				
+    </div>
+</div>
+</div>			

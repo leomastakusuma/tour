@@ -1,0 +1,23 @@
+<div class="col-md-9 column">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Berita</h2><hr>
+                    <?php if(!empty($getberita))?>
+                    <h1><?php echo $getberita->judul_berita?></h1> 
+                    
+                    <span class="label label-default"><?php echo $getberita->tgl_berita ?> </span></br> 
+                    
+                    <br>
+                    <img src="<?php echo URL .'public/images/'.$getberita->gambar?>" alt="IMAGE" class="img-rounded" width='80%'>  
+                    <p class="text-justify"><?php echo $getberita->isi_berita?></p>
+                          
+                    <!--<a href="<?php echo URL ?>" class="btn btn-success active btn-xs" type="button">Kembali &raquo</a><span class="label label-default"></span><span class="label label-default"></span> <br /> <br /> <br /><hr>-->                   
+                 </div> 
+            </div>
+        </div>				
+    </div>
+</div>
+</div>			

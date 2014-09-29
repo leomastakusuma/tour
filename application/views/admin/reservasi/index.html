@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--application/views/admin/reservasi/index.html-->
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript" src="<?php echo URL;?>public/js/nicEdit-latest.js"></script>
+<script type="text/javascript">
+       bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
+<div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <!--Content-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Data Reservasi <small></small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/all">Dashboard</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/datareservasi">Data Reservasi</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-dashboard"></i> Input Reservasi
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+               <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Input Reservasi</h3>
+                            </div>
+                            <div class="panel-body">
+
+                            <?php
+                                if(!empty($msg)):
+                                    foreach($msg as $message){
+                                        echo "<div class='alert alert-info' role='alert'> <i class='fa fa-info-circle'></i> ".$message."</div>";
+                                    }
+                                endif;
+                           ?> 
+                           
+                           <br>
+
+
+
+
+                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/insertreservasi" method="post" enctype="multipart/form-data" >
+                            <div class="form-group">
+                            <label for="nama" class="col-sm-2 control-label">Tujuan</label>
+                            <div class="col-sm-7">
+                            <input class="form-control" type="text" name="tujuan" id="tujuan" placeholder="Tujuan" value="<?php if(!empty($form['tujuan'])) echo $form['tujuan'] ?>">
+                            </div>
+                            </div>
+                                
+                            <div class="form-group">
+                            <label for="durasi" class="col-sm-2 control-label">Durasi</label>
+                            <div class="col-sm-5">
+                            <input class="form-control" type="text" name="durasi" id="tujuan" placeholder="Durasi" value="<?php if(!empty($form['durasi'])) echo $form['durasi'] ?>">
+                            </div>
+                            </div>    
+                             
+                            <div class="form-group">
+                            <label for="paket" class="col-sm-2 control-label">Include Paket </label>
+                            <div class="col-sm-10">
+                            <textarea class="form-control" id="paket" placeholder="Include Paket" name="paket" cols="4" rows="15"><?php if(!empty($form['paket'])) echo $form['paket'] ?></textarea>   
+                            </div>
+                            </div>    
+                                                         
+                            <div class="form-group">
+                            <label for="harga" class="col-sm-2 control-label">Harga </label>
+                            <div class="col-sm-3">
+                            <div class="input-group">
+                            <div class="input-group-addon">Rp</div>
+                            <input class="form-control" type="text" placeholder="Harga"  onkeypress="return isNumberKey(event)" id="harga" name="harga" value="<?php if(isset($form['harga'])) echo $form['harga']?>">
+                            </div>
+                            </div>
+                            </div>
+                           
+                                                        
+                            <div class="form-group">
+                            <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
+                            <div class="col-sm-4">
+                                <input type="file" id="file_gambar" name="file_gambar">
+                            <p class="help-block">Pilih Gambar *.jpg</p>
+                            </div>
+                            </div>
+                            
+                                
+                            <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Simpan</button>
+                            <button type="reset" class="btn btn-default">Hapus</button>
+                            </div>
+                            </div>
+                                                             
+                          </form>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+<!--                 <script src="<?php echo URL;?>public/sb-admin/js/jquery-1.11.0.js"></script>
+
+     Bootstrap Core JavaScript 
+    <script src="<?php echo URL;?>public/sb-admin/js/bootstrap.min.js"></script>-->
+
+    <script type="text/JavaScript">
+    function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+    </script>

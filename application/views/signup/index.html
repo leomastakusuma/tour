@@ -1,0 +1,84 @@
+<div class="col-md-9 column">
+    <div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="panel panel-primary">
+        <div class="panel-heading">Form Registrasi</div>
+            <div class="panel-body">
+                <strong>*</strong>Wajib diisi<br><br>
+                
+                <!--isi content-->
+                <div class="row">
+                    <div class="center-block">
+                       <div class="col-xs-12 col-md-12">
+                           
+                           <?php
+                                if(!empty($errormsg)):
+                                    foreach($errormsg as $msg){
+                                        echo "<div class='alert alert-info' role='alert'> <i class='fa fa-info-circle'></i> ".$msg."</div>";
+                                    }
+                                endif;
+                           ?> 
+                           
+                           <br>
+                           <form class="form-horizontal" role="form" action="<?php echo URL?>signup/save" method="post">
+                            <div class="form-group">
+                              <label for="nama" class="col-sm-2 control-label">Nama *</label>
+                              <div class="col-sm-5">
+                              <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="<?php if(!empty($form['nama'])) echo $form['nama'] ?>" >
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="alamat" class="col-sm-2 control-label">Alamat *</label>
+                              <div class="col-sm-8">
+                              <textarea class="form-control" id="alamat" placeholder="Alamat" name="alamat" rows="5"><?php if(!empty($form['alamat'])) echo $form['alamat'] ?></textarea>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="notelpn" class="col-sm-2 control-label">No Telp</label>
+                              <div class="col-sm-4">
+                              <input type="text" class="form-control" id="notelpn" placeholder="No Telpn" name="notlp" value="<?php if(!empty($form['notlp'])) echo $form['notlp'] ?>" >
+                              </div>
+                            </div> 
+
+                            <div class="form-group">
+                              <label for="email" class="col-sm-2 control-label">E-Mail</label>
+                              <div class="col-sm-7">
+                              <input type="email" class="form-control" id="notelpn" placeholder="E-mail" name="email" value="<?php if(!empty($form['email'])) echo $form['email'] ?>">
+                              </div>
+                            </div>    
+
+                            <div class="form-group">
+                              <label for="username" class="col-sm-2 control-label">Username *</label>
+                              <div class="col-sm-4">
+                              <input type="username" class="form-control" id="username" placeholder="Username" name="username" value="<?php if(!empty($form['username'])) echo $form['username'] ?>">
+                              </div>
+                            </div>  
+
+                            <div class="form-group">
+                              <label for="password" class="col-sm-2 control-label">Password *</label>
+                              <div class="col-sm-4">
+                              <input type="Password" class="form-control" id="password" placeholder="Password" name="password" value="<?php if(!empty($form['password'])) echo $form['password'] ?>">
+                              </div>
+                            </div>     
+
+                            <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                            </div>
+                            </div>
+                          </form>
+
+                      </div> 
+                   </div>
+                </div>
+                <!--Akhir isi Content-->
+
+        </div> 
+        </div>
+    </div>				
+    </div>
+</div>
+		
+			

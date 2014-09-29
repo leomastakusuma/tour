@@ -1,0 +1,38 @@
+  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pesan</h4>
+      </div>
+      <div class="modal-body">
+       <p class="text-justify text-danger">
+        <table width="50%">
+                <form class="form-horizontal" role="form" method="post" action="<?php echo URL;?>home/test">
+                        <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td> <input type="text" class="form-control" name="tex" size="5" maxlength="5"></td>
+                        </tr>
+
+                        <tr>
+                                <td colspan="3" align="right">
+                                        <input type="submit" name="simpan" value="simpan" class="btn btn-default">
+                                </td>
+                        </tr>
+                </form>
+
+        </table>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Simpan</button>
+        <a href="<?php echo URL?>home/test" class="btn btn-primary btn-xs"> Exist</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+											 <!--End Modal-->

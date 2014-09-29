@@ -1,0 +1,46 @@
+<div class="col-md-9 column">
+		<div class="row clearfix">
+						<div class="col-md-12 column">
+              <!-- Paket Wisata-->
+              <div class="row clearfix">
+                  <div class="col-md-4 column">
+                   <?php
+                if(!empty($form))
+                { ?>
+                  <div class="alert alert-warning" role="alert">
+                  <h3> <p class="bold"> Error Message !!</p></h3><hr>
+                  <?php 
+                  foreach ($form as $msg) {
+                    echo $msg.'<br>';
+                    # code...
+                  }
+                }
+              ?>                                                                       
+              <!-- Berita -->
+
+              </div>
+              <h2>
+                 <p class="bold">The Test</p>
+              <hr>
+              </h2>
+                <form class="form-horizontal" action="<?php echo URL?>home/getall" method="post">
+                  
+                    
+                    <input type="text" class="form" placeholder="Umur" size="5" name="umur" maxlength="10" 
+                           value="<?php if(isset($form['umur'])) echo $form['umur'] ?>"><br>
+                    <input type="text" class="form" placeholder="Tempat Tanggal Lahir" size="50" name="ttl">
+                 
+                 <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+                  </div>
+              </div>
+             
+             
+
+
+          </div>				
+        </div>
+</div>
+</div>			
+			     

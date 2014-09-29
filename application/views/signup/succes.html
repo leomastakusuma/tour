@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<link href="<?php echo URL; ?>public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript" src="<?php echo URL;?>public/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo URL;?>public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+                <link href="<?php echo URL;?>public/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" type="text/css" rel="stylesheet">
+               
+
+        </head>
+   
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+        <h4 class="modal-title" id="myModalLabel">Selamat!, Anda berhasil registirasi silahkan simpan data dibawah ini.</h4>
+      </div>
+      <div class="modal-body">
+        <?php if(!empty($form))
+                {
+                
+                echo '<strong>Username = </strong>'.$username.'<br>';
+                echo '<strong>Password = </strong>'.$password;
+               
+                }              
+        ?>
+      </div>
+      <div class="modal-footer">
+          <a href="<?php echo URL?>" class="btn btn-default">Close</a>
+          <a href="<?php echo URL?>login" class="btn btn-default">Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+//    var url = array('controller'=>'home','action'=>'news');
+    $("#myModal2").modal('show');{
+        $('#myModal2').on('hidden.bs.modal', function (e) {
+               window.location.href='<?php echo URL?>home/news';
+
+       })
+    }
+});
+</script>
+

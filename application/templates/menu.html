@@ -1,0 +1,33 @@
+ 	<div class="row clearfix">
+		<div class="col-md-12 column">
+                          <div class="row clearfix">
+                            <div class="col-md-3 column">
+                                        <?php Session::init();?>
+					<div class="list-group">
+                                              <a href="#" class="list-group-item active">Menu</a>
+                                              <!--awal Belum login!-->
+                                                <?php if (Session::get('logged') == false):?>
+                                                   <a href="<?php echo URL;?>login" class="list-group-item">Login</a>
+                                                   <a href="<?php echo URL;?>signup" class="list-group-item">Sign Up</a>
+                                                   <a href="<?php echo URL;?>bukutamu" class="list-group-item">Buku Tamu</a>
+                                               <?php endif; ?>
+                                               <!--akhir Belum login!-->
+
+                                               <a href="<?php echo URL;?>armada" class="list-group-item">Armada</a>
+                                               <a href="<?php echo URL;?>kotawisata" class="list-group-item">Kota Wisata</a> 
+                                               <a href="<?php echo URL;?>galerifoto" class="list-group-item">Galery Foto</a> 
+                                                  
+                                               <!--awal setelah login!-->
+                                              <?php if (Session::get('logged') == true):?>
+                                               <a href="<?php echo URL;?>bukutamu" class="list-group-item">Buku Tamu</a>                            
+                                               <a href="<?php echo URL;?>reservasi" class="list-group-item">Reservasi</a>
+                                              
+                                              <a href="<?php echo URL;?>logout/logoutUser" class="list-group-item">Logout</a>
+
+                 
+                                       
+                                              <?php endif; ?>
+                                              <!-- akhir setelah login!-->
+                                            
+                                        </div>
+				</div>
