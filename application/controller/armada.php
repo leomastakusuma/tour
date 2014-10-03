@@ -28,8 +28,8 @@ class Armada extends Controller{
     
     public function searchid($id){
         if(isset($id)){
-            $model = $this->loadModel($this->_model);
-            $armada= $model->searcharmada($id);
+            $model      = $this->loadModel($this->_model);
+            $armadadata = $model->searcharmada($id);
             require 'application/templates/admin/header.html';
             require 'application/views/admin/armada/editarmada.html';
             require 'application/templates/admin/footer.html';
@@ -94,6 +94,46 @@ class Armada extends Controller{
             $modelarmada->deletearmada($id_armada);
             $this->redirect('admin/armada');
       }
+    }
+    
+    public function editarmada(){
+        $form   = $_POST;
+        $armada = $form['armada'];
+        $link   = $form['link'];
+        $images = $_FILES['file_gambar']['name'];
+        $random = rand(0000, 9999); //function random 
+        $newfile = $random . $images;  // implement change name
+        $path = getcwd(); //path on  root directory web
+        $dir = $path . '/public/images/';
+        
+        if(!empty($form)){
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777);
+            }
+            $error = array(); 
+            $extfile = strtolower(substr($_FILES["file_gambar"]["name"], -3));
+            if(empty($armada)){
+            $error[] = 'Armada Tidak Boleh Kosong !';
+            }
+            if(empty($link)){
+            $error[] = 'Link Tidak Boleh Kosong !';
+            }
+            
+            if(empty($images)){
+            $error[] = 'Gambar Tidak Boleh Kosong !';              
+            }
+            if(!empty($images)){
+                if($extfile != 'jpg'){
+                $error[] = 'Format Gambar Hanya *.jpg !';}      
+            }
+            if(count($error) > 0){
+                $msg = $error;
+                require 'application/templates/admin/header.html';
+                require 'application/views/admin/armada/editarmada.html';
+                require 'application/templates/admin/footer.html';
+            }
+        }
+        
     }
 
 }

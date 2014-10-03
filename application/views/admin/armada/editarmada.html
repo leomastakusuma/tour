@@ -27,7 +27,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Input Armada</h3>
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Edit Armada</h3>
                             </div>
                             <div class="panel-body">
                             
@@ -42,19 +42,19 @@
                            ?> 
                            </div>
                             <br>
-                            <?php if(!empty($armada)){?>
+                            <?php if(!empty($armadadata)){?>
                             <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditarmada" method="post" enctype="multipart/form-data" >
                             <div class="form-group">
                             <label for="armada" class="col-sm-2 control-label">Armada</label>
                             <div class="col-sm-7">
-                                <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $armada->armada?>">
+                                <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $armadadata->armada?>">
                             </div>
                             </div>
                                 
                             <div class="form-group">
                             <label for="link" class="col-sm-2 control-label">Link</label>
                             <div class="col-sm-5">
-                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php echo $armada->link?>">
+                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php echo $armadadata->link?>">
                             </div>
                             </div>    
                                         
@@ -62,7 +62,7 @@
                             <div class="form-group">
                             <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
                             <div class="col-sm-4">
-                            <img src="<?php echo URL .'public/images/'.$armada->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
+                            <img src="<?php echo URL .'public/images/'.$armadadata->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
                             <input type="file" id="file_gambar" name="file_gambar">
                             <p class="help-block">Pilih Gambar *.jpg</p>
                             </div>
@@ -78,8 +78,41 @@
                                                              
                            </form>
                            <?php }?>     
+                           
+                           <!--untuk edit ketika error-->
+                           <?php if(!empty($msg)){?>
+                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditarmada" method="post" enctype="multipart/form-data" >
+                            <div class="form-group">
+                            <label for="armada" class="col-sm-2 control-label">Armada</label>
+                            <div class="col-sm-7">
+                                <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $form['armada']?>">
+                            </div>
+                            </div>
                                 
-                                
+                            <div class="form-group">
+                            <label for="link" class="col-sm-2 control-label">Link</label>
+                            <div class="col-sm-5">
+                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php echo $form['link']?>">
+                            </div>
+                            </div>    
+                                        
+                                                                                   
+                            <div class="form-group">
+                            <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
+                            <div class="col-sm-4">
+                            <img src="<?php echo URL .'public/images/'.$armadadata->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
+                            <input type="file" id="file_gambar" name="file_gambar">
+                            <p class="help-block">Pilih Gambar *.jpg</p>
+                            </div>
+                            </div>
+                            
+                            <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Simpan</button>
+                            <button type="reset" class="btn btn-default">Hapus</button>
+                            </div>
+                            </div>
+                           <?php }?>     
                             </div>
                         </div>
                     </div>

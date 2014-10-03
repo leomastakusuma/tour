@@ -477,7 +477,9 @@ class admin extends Controller {
        
     }
     public function saveeditarmada(){
-        print_r($_POST);
+       require 'application/controller/armada.php';
+       $armada = new Armada;
+       $armada->editarmada();
         
     }
 }
