@@ -18,6 +18,7 @@ class admin extends Controller {
     private $modelberita        = 'beritamodels';
     private $modeltransaksi     = 'ordermodels';
     private $modeluser          = 'usermodels';
+    private $modelarmada        = 'armadamodels';
 
     public function __construct() {
         parent::__construct();
@@ -460,5 +461,12 @@ class admin extends Controller {
         $armada = new Armada;
         $armada->armadanew();
     }
-
+    
+    public function deletearmada($id_armada){
+      if(isset($id_armada)){
+            $modelarmada = $this->loadModel($this->modelarmada);
+            $modelarmada->deletearmada($id_armada);
+            $this->redirect('admin/armada');
+      }
+    }
 }

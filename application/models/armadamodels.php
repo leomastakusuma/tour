@@ -12,9 +12,21 @@ class Armadamodels extends Models {
          return $sql->fetchAll();
 	}
 
-	public function savearmada(){
-
-	}
+	public function savearmada($armada,$gambar,$link){
+        $data = array(':armada'            => $armada,
+                      ':gambar'         =>$gambar,
+                      ':link'         => $link
+                      );
+                     
+        $sql  = "INSERT INTO {$this->table}";
+        $sql .= " (armada , gambar,link)";
+        $sql .= " VALUES ( :armada, :gambar, :link)";
+        $query = $this->db->prepare($sql);
+        
+        $query->execute($data);      
+       
+            
+	}   
 
 	public function deletearmada($id){
         $sql     = "DELETE FROM {$this->table} ";
