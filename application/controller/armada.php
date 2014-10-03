@@ -43,9 +43,31 @@ class Armada extends Controller{
     }
     
     public function armadanew(){
-        echo '<pre>';
+        extract($_POST);
         print_r($_POST);
-        echo '</pre>';
-        
+        $armada;
+        $link;
+        $images = $_FILES['file_gambar']['name'].'</br>';
+        if(!empty(extract($_POST))){
+            if(empty($armada)){
+            $error[] = 'Armada Tidak Boleh Kosong !';
+            }
+            if(empty($link)){
+            $error[] = 'Link Tidak Boleh Kosong';
+            }
+            if(empty($images)){
+            $error[] = 'Gambar Tidak Boleh Kosong';
+            }
+            echo count($error);
+            if(count($error) > 0){
+                $msg = $error;
+                echo '<pre>';
+                print_r($msg);
+            }
+            else {
+                echo 'berhasil';
+            }
+        }
     }
+
 }

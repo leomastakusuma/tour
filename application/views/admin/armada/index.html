@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <!--application/views/admin/armada/index.html-->
-
-
 <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -13,13 +11,13 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/all">Dashboard</a>
+                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin">Dashboard</a>
                             </li>
                             <li>
-                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/datareservasi">Data Reservasi</a>
+                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/#">Data Armada</a>
                             </li>
                             <li>
-                                <i class="fa fa-dashboard"></i> Input Reservasi
+                                <i class="fa fa-dashboard"></i> Input Armada
                             </li>
                         </ol>
                     </div>
@@ -41,11 +39,7 @@
                                 endif;
                            ?> 
                            
-                           <br>
-
-
-
-
+                            <br>
                             <form class="form-horizontal" role="form" action="<?php echo URL?>admin/savearmada" method="post" enctype="multipart/form-data" >
                             <div class="form-group">
                             <label for="armada" class="col-sm-2 control-label">Armada</label>
@@ -92,11 +86,11 @@
      Bootstrap Core JavaScript 
     <script src="<?php echo URL;?>public/sb-admin/js/bootstrap.min.js"></script>-->
 
-    <script type="text/JavaScript">
+<script type="text/JavaScript">
     function isNumberKey(evt){
     var charCode = (evt.which) ? evt.which : evt.keyCode
     if (charCode > 31 && (charCode < 48 || charCode > 57))
         return false;
     return true;
 }
-    </script>
+</script>
