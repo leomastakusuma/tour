@@ -30,15 +30,17 @@
                             <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Input Reservasi</h3>
                             </div>
                             <div class="panel-body">
-
+                            
                             <?php
                                 if(!empty($msg)):
+                                echo "<div class='alert alert-info' role='alert'> ";
+                                echo "<i class='fa fa-info-circle'>Error Message!</i> <br/>";
                                     foreach($msg as $message){
-                                        echo "<div class='alert alert-info' role='alert'> <i class='fa fa-info-circle'></i> ".$message."</div>";
+                                        echo ' '.$message.'<br/>';
                                     }
                                 endif;
                            ?> 
-                           
+                           </div>
                             <br>
                             <form class="form-horizontal" role="form" action="<?php echo URL?>admin/savearmada" method="post" enctype="multipart/form-data" >
                             <div class="form-group">

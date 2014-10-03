@@ -44,25 +44,25 @@ class Armada extends Controller{
     
     public function armadanew(){
         extract($_POST);
-        print_r($_POST);
         $armada;
         $link;
-        $images = $_FILES['file_gambar']['name'].'</br>';
+        $images = $_FILES['file_gambar']['name'];
         if(!empty(extract($_POST))){
             if(empty($armada)){
             $error[] = 'Armada Tidak Boleh Kosong !';
             }
             if(empty($link)){
-            $error[] = 'Link Tidak Boleh Kosong';
+            $error[] = 'Link Tidak Boleh Kosong !';
             }
             if(empty($images)){
-            $error[] = 'Gambar Tidak Boleh Kosong';
+            $error[] = 'Gambar Tidak Boleh Kosong !';
             }
-            echo count($error);
+            $error = array();
             if(count($error) > 0){
                 $msg = $error;
-                echo '<pre>';
-                print_r($msg);
+                require 'application/templates/admin/header.html';
+                require 'application/views/admin/armada/index.html';
+                require 'application/templates/admin/footer.html';
             }
             else {
                 echo 'berhasil';
