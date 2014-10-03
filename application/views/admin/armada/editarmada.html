@@ -47,6 +47,7 @@
                             <div class="form-group">
                             <label for="armada" class="col-sm-2 control-label">Armada</label>
                             <div class="col-sm-7">
+                                <input type="text" name="id" value="<?php echo $armadadata->id_armada?>" hidden>
                                 <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $armadadata->armada?>">
                             </div>
                             </div>
@@ -62,7 +63,11 @@
                             <div class="form-group">
                             <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
                             <div class="col-sm-4">
+                            <?php $dir = getcwd();?>
+                            <?php $images =$dir . '/public/images/'.$armadadata->gambar;?>
+                            <?php if(file_exists($images)){?>
                             <img src="<?php echo URL .'public/images/'.$armadadata->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
+                            <?php }?>
                             <input type="file" id="file_gambar" name="file_gambar">
                             <p class="help-block">Pilih Gambar *.jpg</p>
                             </div>
@@ -85,6 +90,7 @@
                             <div class="form-group">
                             <label for="armada" class="col-sm-2 control-label">Armada</label>
                             <div class="col-sm-7">
+                                <input type="text" name="id" value="<?php echo $form['id']?>" hidden>
                                 <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $form['armada']?>">
                             </div>
                             </div>
@@ -100,7 +106,12 @@
                             <div class="form-group">
                             <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
                             <div class="col-sm-4">
-                            <img src="<?php echo URL .'public/images/'.$armadadata->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
+                            <?php if(!empty($gambar)){?>
+                            <?php $dir = getcwd();?>
+                            <?php $images =$dir . '/public/images/'.$gambar->gambar;?>
+                            <?php if(file_exists($images)){?>
+                            <img src="<?php echo URL .'public/images/'.$gambar->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
+                            <?php }}?>
                             <input type="file" id="file_gambar" name="file_gambar">
                             <p class="help-block">Pilih Gambar *.jpg</p>
                             </div>

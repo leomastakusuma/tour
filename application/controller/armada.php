@@ -98,6 +98,7 @@ class Armada extends Controller{
     
     public function editarmada(){
         $form   = $_POST;
+        $id     = $form['id'];
         $armada = $form['armada'];
         $link   = $form['link'];
         $images = $_FILES['file_gambar']['name'];
@@ -119,18 +120,34 @@ class Armada extends Controller{
             $error[] = 'Link Tidak Boleh Kosong !';
             }
             
-            if(empty($images)){
-            $error[] = 'Gambar Tidak Boleh Kosong !';              
-            }
             if(!empty($images)){
                 if($extfile != 'jpg'){
-                $error[] = 'Format Gambar Hanya *.jpg !';}      
+                $error[] = 'Format Gambar Hanya *.jpg !';}
+                
             }
             if(count($error) > 0){
-                $msg = $error;
+                $msg    = $error;
+                $model  = $this->loadModel($this->_model);
+                $gambar = $model->searcharmada($id);
                 require 'application/templates/admin/header.html';
                 require 'application/views/admin/armada/editarmada.html';
                 require 'application/templates/admin/footer.html';
+            }
+            else{
+                $model   = $this->loadModel($this->_model);
+                if(!empty($images)){
+                $gambar  = $model->searcharmada($id);
+                if (file_exists($dir . $gambar->gambar)) {
+                        unlink($dir . $gambar->gambar);}
+                $move_gambar = $dir . basename($newfile);
+                move_uploaded_file($_FILES['file_gambar']['tmp_name'], $move_gambar);        
+                $saveeditarmada = $model->updatearmadaall($armada, $newfile, $link, $id);
+                $this->redirect('admin/armada');
+                }
+                else{
+                $saveeditarmada = $model->updatearmada($armada,$link, $id);
+                $this->redirect('admin/armada');
+                }
             }
         }
         
