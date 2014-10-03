@@ -57,11 +57,11 @@ class Controller
     }  
     
     public function redirect($value){
-        $url  = 'http://' . $_SERVER['HTTP_HOST'];            // Get the server
-        $url .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); // Get the current directory
-        $url .= '/';
-        $url .= $value;            // <-- Your relative path
-        header('Location: ' . $url, true, 302);        
+//        $url  = 'http://' . $_SERVER['HTTP_HOST'];            // Get the server
+//        $url .= rtrim(dirname($_SERVER['PHP_SELF']), '/\\'); // Get the current directory
+//        $url .= '/';
+//        $url .= $value;            // <-- Your relative path
+        header('Location: ' .URL.$value, true, 302);        
     }
     
     public function view($controller,$action,$data){

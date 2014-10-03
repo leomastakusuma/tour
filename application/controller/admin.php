@@ -482,4 +482,17 @@ class admin extends Controller {
        $armada->editarmada();
         
     }
+    
+    public function kotawisata(){
+        
+    }
+    public function savekotawisata(){
+        
+    }
+    public function searchkotawisata(){
+        
+    }
+    public function deletekotawisata(){
+        
+    }
 }
