@@ -486,12 +486,22 @@ class admin extends Controller {
     public function kotawisata(){
         
     }
-    public function savekotawisata(){
+    public function kotawisatanew() {
+        require 'application/templates/admin/header.html';
+        require 'application/views/admin/kotawisata/index.html';
+        require 'application/templates/admin/footer.html';
+    }
+
+    public function savekotawisata() {
+        require 'application/controller/kotawisata.php';
+        $kotawisata = new Kotawisata;
+        $kotawisata->savewisata();
+    }
+
+    public function searchkotawisata() {
         
     }
-    public function searchkotawisata(){
-        
-    }
+
     public function deletekotawisata(){
         
     }
