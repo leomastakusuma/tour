@@ -469,4 +469,15 @@ class admin extends Controller {
             $this->redirect('admin/armada');
       }
     }
+    
+    public function editarmada($id){
+        require 'application/controller/armada.php';
+        $armada = new Armada;
+        $armada->searchid($id);
+       
+    }
+    public function saveeditarmada(){
+        print_r($_POST);
+        
+    }
 }

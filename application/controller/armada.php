@@ -29,9 +29,10 @@ class Armada extends Controller{
     public function searchid($id){
         if(isset($id)){
             $model = $this->loadModel($this->_model);
-            $id_armada = $model->searcharmada($id);
-            echo '<pre>';
-            print_r($id_armada);
+            $armada= $model->searcharmada($id);
+            require 'application/templates/admin/header.html';
+            require 'application/views/admin/armada/editarmada.html';
+            require 'application/templates/admin/footer.html';
                     
         }
         

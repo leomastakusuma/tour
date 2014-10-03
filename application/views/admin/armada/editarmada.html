@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--application/views/admin/armada/index.html-->
+<!--application/views/admin/armada/editarmada.html-->
 <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -42,18 +42,19 @@
                            ?> 
                            </div>
                             <br>
-                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/savearmada" method="post" enctype="multipart/form-data" >
+                            <?php if(!empty($armada)){?>
+                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditarmada" method="post" enctype="multipart/form-data" >
                             <div class="form-group">
                             <label for="armada" class="col-sm-2 control-label">Armada</label>
                             <div class="col-sm-7">
-                            <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php if(!empty($form['armada'])) echo $form['armada'] ?>">
+                                <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $armada->armada?>">
                             </div>
                             </div>
                                 
                             <div class="form-group">
                             <label for="link" class="col-sm-2 control-label">Link</label>
                             <div class="col-sm-5">
-                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php if(!empty($form['link'])) echo $form['link'] ?>">
+                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php echo $armada->link?>">
                             </div>
                             </div>    
                                         
@@ -61,6 +62,7 @@
                             <div class="form-group">
                             <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
                             <div class="col-sm-4">
+                            <img src="<?php echo URL .'public/images/'.$armada->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
                             <input type="file" id="file_gambar" name="file_gambar">
                             <p class="help-block">Pilih Gambar *.jpg</p>
                             </div>
@@ -75,7 +77,7 @@
                            
                                                              
                            </form>
-                                
+                           <?php }?>     
                                 
                                 
                             </div>
