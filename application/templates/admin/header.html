@@ -181,7 +181,7 @@ $getuserinfo    = $modeluser->getuserinfo();
                     <?php $active4 = '<li>'?>
                     <?php $kata = substr($value,20);?>
                     <?php if(($value == 'admin/transaksiorder') || ($value == 'admin//'.$kata) || ($value == 'admin/')) :?>
-                    <?php $active3 = "<li class='active'>"?>
+                    <?php $active4 = "<li class='active'>"?>
                     <?php endif;?>
                     
                     <?php $active5 = '<li>'?>
@@ -191,12 +191,12 @@ $getuserinfo    = $modeluser->getuserinfo();
                     
                     <?php $active6 = '<li>'?>
                     <?php if($value == 'admin/galery'):?>
-                    <?php $active5 = "<li class='active'>"?>
+                    <?php $active6 = "<li class='active'>"?>
                     <?php endif;?>
                     
                     <?php $active7 = '<li>'?>
-                    <?php if($value == 'admin/kotawisata'):?>
-                    <?php $active5 = "<li class='active'>"?>
+                    <?php if(($value == 'admin/kotawisata')||($value == 'admin/kotawisatanew')):?>
+                    <?php $active7 = "<li class='active'>"?>
                     <?php endif;?>
                     
                     
@@ -236,10 +236,10 @@ $getuserinfo    = $modeluser->getuserinfo();
                         <a href="javascript:;" data-toggle="collapse" data-target="#kotawisata"><i class="fa fa-fw fa-anchor"></i> Kota Wisata</a>
                         <ul id="kotawisata" class="collapse">
                         <li>
-                            <a href="<?php echo URL?>admin/#">Input Wisata</a>
+                            <a href="<?php echo URL?>admin/kotawisatanew">Input Wisata</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>admin/#">Data Wisata</a>
+                            <a href="<?php echo URL?>admin/kotawisata">Data Wisata</a>
                         </li>
                         </ul>
                     </li>

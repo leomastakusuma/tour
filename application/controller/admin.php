@@ -19,6 +19,7 @@ class admin extends Controller {
     private $modeltransaksi     = 'ordermodels';
     private $modeluser          = 'usermodels';
     private $modelarmada        = 'armadamodels';
+    private $modelwisata        = 'kotawisatamodels';
 
     public function __construct() {
         parent::__construct();
@@ -484,7 +485,9 @@ class admin extends Controller {
     }
     
     public function kotawisata(){
-        
+        require 'application/controller/kotawisata.php';
+        $kotawisata = new Kotawisata;
+        $kotawisata->getall();
     }
     public function kotawisatanew() {
         require 'application/templates/admin/header.html';
@@ -498,11 +501,26 @@ class admin extends Controller {
         $kotawisata->savewisata();
     }
 
-    public function searchkotawisata() {
+    public function editkotawisata($id){
+        require 'application/controller/kotawisata.php';
+        $kotawisata = new Kotawisata;
+        $kotawisata->searchid($id);
         
+    }
+    
+    public function saveeditwisata(){
+        require 'application/controller/kotawisata.php';
+        $kotawisata = new Kotawisata;
+        $kotawisata->editwisata();
     }
 
-    public function deletekotawisata(){
-        
+    public function deletekotawisata($id_kotawisata){
+     if(isset($id_kotawisata)){
+            $modelwisata = $this->loadModel($this->modelwisata);
+            $delete      =$modelwisata->deletewisata($id_kotawisata);
+            $this->redirect('admin/kotawisata');
+      }
     }
+        
+    
 }

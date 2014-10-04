@@ -7,17 +7,17 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Data Armada <small></small>
+                            Data Kota Wisata <small></small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
                                 <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin">Dashboard</a>
                             </li>
                             <li>
-                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/armada">Data Armada</a>
+                                <i class="fa fa-dashboard"></i> <a href="<?php echo URL?>admin/kotawisata">Data Kota Wisata</a>
                             </li>
                             <li>
-                                <i class="fa fa-dashboard"></i> Input Armada
+                                <i class="fa fa-dashboard"></i> Edit Kota Wisata
                             </li>
                         </ol>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Edit Armada</h3>
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Edit Kota Wisata</h3>
                             </div>
                             <div class="panel-body">
                             
@@ -42,20 +42,20 @@
                            ?> 
                            </div>
                             <br>
-                            <?php if(!empty($armadadata)){?>
-                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditarmada" method="post" enctype="multipart/form-data" >
+                            <?php if(!empty($wisatadata)){?>
+                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditwisata" method="post" enctype="multipart/form-data" >
                             <div class="form-group">
-                            <label for="armada" class="col-sm-2 control-label">Armada</label>
+                            <label for="kotawisata" class="col-sm-2 control-label">Kota Wisata</label>
                             <div class="col-sm-7">
-                                <input type="text" name="id" value="<?php echo $armadadata->id_armada?>" hidden>
-                                <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $armadadata->armada?>">
+                                <input type="text" name="id" value="<?php echo $wisatadata->id_kotawisata?>" hidden>
+                                <input class="form-control" type="text" name="kotawisata" id="tujuan" placeholder="Kota Wisata" value="<?php echo $wisatadata->kotawisata?>">
                             </div>
                             </div>
                                 
                             <div class="form-group">
                             <label for="link" class="col-sm-2 control-label">Link</label>
                             <div class="col-sm-5">
-                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php echo $armadadata->link?>">
+                            <input class="form-control" type="text" name="link" id="tujuan" placeholder="Link" value="<?php echo $wisatadata->link?>">
                             </div>
                             </div>    
                                         
@@ -64,9 +64,9 @@
                             <label for="file_gambar" class="col-sm-2 control-label">Gambar </label>
                             <div class="col-sm-4">
                             <?php $dir = getcwd();?>
-                            <?php $images =$dir . '/public/images/'.$armadadata->gambar;?>
+                            <?php $images =$dir . '/public/images/'.$wisatadata->gambar;?>
                             <?php if(file_exists($images)){?>
-                            <img src="<?php echo URL .'public/images/'.$armadadata->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
+                            <img src="<?php echo URL .'public/images/'.$wisatadata->gambar?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
                             <?php }?>
                             <input type="file" id="file_gambar" name="file_gambar">
                             <p class="help-block">Pilih Gambar *.jpg</p>
@@ -88,10 +88,10 @@
                            <?php if(!empty($msg)){?>
                             <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditarmada" method="post" enctype="multipart/form-data" >
                             <div class="form-group">
-                            <label for="armada" class="col-sm-2 control-label">Armada</label>
+                            <label for="armada" class="col-sm-2 control-label">Kota Wisata</label>
                             <div class="col-sm-7">
                                 <input type="text" name="id" value="<?php echo $form['id']?>" hidden>
-                                <input class="form-control" type="text" name="armada" id="tujuan" placeholder="Armada" value="<?php echo $form['armada']?>">
+                                <input class="form-control" type="text" name="kotawisata" id="tujuan" placeholder="Kota Wisata" value="<?php echo $form['armada']?>">
                             </div>
                             </div>
                                 
