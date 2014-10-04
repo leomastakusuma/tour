@@ -14,12 +14,12 @@
 class admin extends Controller {
 
     //put your code here
-    private $modelreservasi     = 'reservasimodels';
-    private $modelberita        = 'beritamodels';
-    private $modeltransaksi     = 'ordermodels';
-    private $modeluser          = 'usermodels';
-    private $modelarmada        = 'armadamodels';
-    private $modelwisata        = 'kotawisatamodels';
+    private $modelreservasi = 'reservasimodels';
+    private $modelberita = 'beritamodels';
+    private $modeltransaksi = 'ordermodels';
+    private $modeluser = 'usermodels';
+    private $modelarmada = 'armadamodels';
+    private $modelwisata = 'kotawisatamodels';
 
     public function __construct() {
         parent::__construct();
@@ -79,7 +79,7 @@ class admin extends Controller {
             if (empty($tujuan)) {
                 $error[] = 'Format Tujuan Salah, Tidak dizinkan format Alphanumeric,Hanya [A-Z,a-z]';
             }
-            if(empty($durasi)){
+            if (empty($durasi)) {
                 $error[] = 'Durasi Tidak Boleh Kosong';
             }
             if (empty($paket)) {
@@ -105,7 +105,7 @@ class admin extends Controller {
 
                 //simpan ke database
                 $model = $this->loadModel($this->modelreservasi);
-                $simpan = $model->insertreservasi($tanggal, $tujuan,$durasi, $harga, $paket, basename($newfile));
+                $simpan = $model->insertreservasi($tanggal, $tujuan, $durasi, $harga, $paket, basename($newfile));
                 $this->redirect('admin/datareservasi');
             }
         }
@@ -126,7 +126,7 @@ class admin extends Controller {
         $form = $_POST;
         $id = $form['id'];
         $tanggal = date('Y-m-d H:i:s');
-        $durasi  = $form['durasi'];
+        $durasi = $form['durasi'];
         $tujuan = $form['tujuan'];
         $paket = $form['paket'];
         $harga = $form['harga'];
@@ -144,8 +144,8 @@ class admin extends Controller {
             if (empty($tujuan)) {
                 $error[] = 'Format Tujuan Salah, Tidak dizinkan format Alphanumeric,Hanya [A-Z,a-z]';
             }
-            if(empty($durasi)){
-                 $error[] = 'Durasi Tidak Boleh Kosong';
+            if (empty($durasi)) {
+                $error[] = 'Durasi Tidak Boleh Kosong';
             }
             if (empty($paket)) {
                 $error[] = 'Paket Tidak Boleh Kosong';
@@ -180,11 +180,11 @@ class admin extends Controller {
                     }
                     $move_gambar = $dir . basename($newfile);
                     move_uploaded_file($_FILES['file_gambar']['tmp_name'], $move_gambar);
-                    $simpan = $modelreservasi->updatereservasiall($tanggal, $durasi,$tujuan, $paket, $harga, $newfile, $id);
+                    $simpan = $modelreservasi->updatereservasiall($tanggal, $durasi, $tujuan, $paket, $harga, $newfile, $id);
                     $this->redirect('admin/datareservasi');
                 } else {
 
-                    $simpan = $modelreservasi->updatereservasi($tanggal, $tujuan, $durasi,$paket, $harga, $id);
+                    $simpan = $modelreservasi->updatereservasi($tanggal, $tujuan, $durasi, $paket, $harga, $id);
                     $this->redirect('admin/datareservasi');
                 }
             }
@@ -372,17 +372,17 @@ class admin extends Controller {
     }
 
     public function updateberita() {
-        
-        $form       = $_POST;
+
+        $form = $_POST;
         $tanggal = date('Y-m-d H:i:s');
-        $id         = $form['id'];
-        $judul      = $form['judul'];
-        $isiberita  = $form['isiberita'];
+        $id = $form['id'];
+        $judul = $form['judul'];
+        $isiberita = $form['isiberita'];
         $lengtjudul = strlen($judul);
-        $lengtisi   = strlen($isiberita);
-        
-         
-        if(!empty($form)){
+        $lengtisi = strlen($isiberita);
+
+
+        if (!empty($form)) {
             $error = array();
             if (!empty($judul) && ($lengtjudul < 10)) {
                 $error[] = 'Judul Minimal 10 Karakter';
@@ -393,13 +393,12 @@ class admin extends Controller {
             /*
              * Cek Keaddaan jumlah error
              */
-            if(count($error) > 0){
+            if (count($error) > 0) {
                 $msg = $error;
                 require 'application/templates/admin/header.html';
                 require 'application/views/admin/berita/validasinoimage.html';
-                require 'application/templates/admin/footer.html';            
-            }
-            else{
+                require 'application/templates/admin/footer.html';
+            } else {
                 $id_user = $_SESSION['id_user'];
                 $modelberita = $this->loadModel($this->modelberita);
                 $simpan = $modelberita->updateberita($tanggal, $id_user, $judul, $isiberita, $id);
@@ -407,88 +406,84 @@ class admin extends Controller {
             }
         }
     }
-    
-    public function orderORD(){
-        $modeltransaksi  = $this->loadModel($this->modeltransaksi);
+
+    public function orderORD() {
+        $modeltransaksi = $this->loadModel($this->modeltransaksi);
         $getall = $modeltransaksi->getallORD();
-        require 'application/templates/admin/header.html';  
+        require 'application/templates/admin/header.html';
         require 'application/views/admin/transaksi/dataorder.html';
-        require 'application/templates/admin/footer.html'; 
-    }
-    
-    public function orderSUCCESS(){
-        $modeltransaksi  = $this->loadModel($this->modeltransaksi);
-        $getall = $modeltransaksi->getallSUCCES();
-        require 'application/templates/admin/header.html';  
-        require 'application/views/admin/transaksi/dataordersucces.html';
-        require 'application/templates/admin/footer.html'; 
+        require 'application/templates/admin/footer.html';
     }
 
-        public function deleteORD($id_transaksi){
-        if(isset($id_transaksi)){
+    public function orderSUCCESS() {
+        $modeltransaksi = $this->loadModel($this->modeltransaksi);
+        $getall = $modeltransaksi->getallSUCCES();
+        require 'application/templates/admin/header.html';
+        require 'application/views/admin/transaksi/dataordersucces.html';
+        require 'application/templates/admin/footer.html';
+    }
+
+    public function deleteORD($id_transaksi) {
+        if (isset($id_transaksi)) {
             $modeltransaksi = $this->loadModel($this->modeltransaksi);
             $modeltransaksi->deleteORD($id_transaksi);
             $this->redirect('admin/orderORD');
         }
-        
     }
-    
-    public function payment($id_transaksi){
-        if(isset($id_transaksi)){
+
+    public function payment($id_transaksi) {
+        if (isset($id_transaksi)) {
             $modeltransaksi = $this->loadModel($this->modeltransaksi);
             $modeltransaksi->updateORD($id_transaksi);
             $this->redirect('admin/orderORD');
         }
     }
-    
 
-
-    public function armada (){
+    public function armada() {
         require 'application/controller/armada.php';
         $armada = new Armada;
         $armada->getall();
-                
     }
-    
-    public function armadanew(){
-    
-    require 'application/templates/admin/header.html';
-    require 'application/views/admin/armada/index.html';
-    require 'application/templates/admin/footer.html';
+
+    public function armadanew() {
+
+        require 'application/templates/admin/header.html';
+        require 'application/views/admin/armada/index.html';
+        require 'application/templates/admin/footer.html';
     }
-    
-    public function savearmada(){
+
+    public function savearmada() {
         require 'application/controller/armada.php';
         $armada = new Armada;
         $armada->armadanew();
     }
-    
-    public function deletearmada($id_armada){
-      if(isset($id_armada)){
+
+    public function deletearmada($id_armada) {
+        if (isset($id_armada)) {
             $modelarmada = $this->loadModel($this->modelarmada);
             $modelarmada->deletearmada($id_armada);
             $this->redirect('admin/armada');
-      }
+        }
     }
-    
-    public function editarmada($id){
+
+    public function editarmada($id) {
         require 'application/controller/armada.php';
         $armada = new Armada;
         $armada->searchid($id);
-       
     }
-    public function saveeditarmada(){
-       require 'application/controller/armada.php';
-       $armada = new Armada;
-       $armada->editarmada();
-        
+
+    public function saveeditarmada() {
+        require 'application/controller/armada.php';
+        $armada = new Armada;
+        $armada->editarmada();
     }
-    
-    public function kotawisata(){
+
+    public function kotawisata() {
         require 'application/controller/kotawisata.php';
         $kotawisata = new Kotawisata;
         $kotawisata->getall();
     }
+
     public function kotawisatanew() {
         require 'application/templates/admin/header.html';
         require 'application/views/admin/kotawisata/index.html';
@@ -501,26 +496,50 @@ class admin extends Controller {
         $kotawisata->savewisata();
     }
 
-    public function editkotawisata($id){
+    public function editkotawisata($id) {
         require 'application/controller/kotawisata.php';
         $kotawisata = new Kotawisata;
         $kotawisata->searchid($id);
-        
     }
-    
-    public function saveeditwisata(){
+
+    public function saveeditwisata() {
         require 'application/controller/kotawisata.php';
         $kotawisata = new Kotawisata;
         $kotawisata->editwisata();
     }
 
-    public function deletekotawisata($id_kotawisata){
-     if(isset($id_kotawisata)){
+    public function deletekotawisata($id_kotawisata) {
+        if (isset($id_kotawisata)) {
             $modelwisata = $this->loadModel($this->modelwisata);
-            $delete      =$modelwisata->deletewisata($id_kotawisata);
+            $delete = $modelwisata->deletewisata($id_kotawisata);
             $this->redirect('admin/kotawisata');
-      }
+        }
     }
+
+    public function galery() {
+        require 'application/controller/galerifoto.php';
+        $galery = new galerifoto();
+        $galery->getall();
+    }
+
+    public function galerynew() {
+        require 'application/templates/admin/header.html';
+        require 'application/views/admin/galery/index.html';
+        require 'application/templates/admin/footer.html';
+    }
+
+    public function insertgalery() {
+        require 'application/controller/galerifoto.php';
+        $galery = new galerifoto();
+        $galery->savegalery();
+    }
+
+    public function saveeditgalery() {
         
-    
+    }
+
+    public function deletegalery() {
+        
+    }
+
 }

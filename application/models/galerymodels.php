@@ -14,12 +14,14 @@ class galerymodels extends Models{
 
     } 
 
-    public function delete(){
-
+    public function deletegalery($id) {
+        $sql = "DELETE FROM {$this->table} ";
+        $sql .= " WHERE id_armada = {$id}";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(":id_galery" => $id));
     }
-    public function search($id){
-
-    }
+    
+   
 
 
 }

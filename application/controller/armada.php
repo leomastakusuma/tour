@@ -15,7 +15,7 @@ class Armada extends Controller{
         require_once 'application/templates/menu.html';
         $model  = $this->loadModel($this->_model);
         $getall = $model->getall();
-        require_once 'application/views/armada/indexx.html';
+        require_once 'application/views/armada/index.html';
         require_once 'application/templates/footer.php';  
     }
     public function getall(){
