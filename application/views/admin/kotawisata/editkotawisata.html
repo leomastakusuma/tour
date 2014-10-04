@@ -86,12 +86,12 @@
                            
                            <!--untuk edit ketika error-->
                            <?php if(!empty($msg)){?>
-                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditarmada" method="post" enctype="multipart/form-data" >
+                            <form class="form-horizontal" role="form" action="<?php echo URL?>admin/saveeditwisata" method="post" enctype="multipart/form-data" >
                             <div class="form-group">
                             <label for="armada" class="col-sm-2 control-label">Kota Wisata</label>
                             <div class="col-sm-7">
                                 <input type="text" name="id" value="<?php echo $form['id']?>" hidden>
-                                <input class="form-control" type="text" name="kotawisata" id="tujuan" placeholder="Kota Wisata" value="<?php echo $form['armada']?>">
+                                <input class="form-control" type="text" name="kotawisata" id="tujuan" placeholder="Kota Wisata" value="<?php echo $form['kotawisata']?>">
                             </div>
                             </div>
                                 

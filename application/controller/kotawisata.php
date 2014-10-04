@@ -7,6 +7,9 @@
  */
 
 class Kotawisata extends Controller{
+    /*params @model
+     * 
+     */
     private $_model = 'kotawisatamodels';
     
     public function index(){
@@ -88,12 +91,9 @@ class Kotawisata extends Controller{
     }
     
     public function editwisata(){
-        $form   = $_POST;
-        echo '<pre>';
-        print_r($form);
-        die;
-        $id     = $form['id'];
-        $armada = $form['armada'];
+        $form       = $_POST;
+        $id         = $form['id'];
+        $kotawisata = $form['kotawisata'];
         $link   = $form['link'];
         $images = $_FILES['file_gambar']['name'];
         $random = rand(0000, 9999); //function random 
@@ -107,8 +107,8 @@ class Kotawisata extends Controller{
             }
             $error = array(); 
             $extfile = strtolower(substr($_FILES["file_gambar"]["name"], -3));
-            if(empty($armada)){
-            $error[] = 'Armada Tidak Boleh Kosong !';
+            if(empty($kotawisata)){
+            $error[] = 'Kota Wisata Tidak Boleh Kosong !';
             }
             if(empty($link)){
             $error[] = 'Link Tidak Boleh Kosong !';
@@ -122,25 +122,26 @@ class Kotawisata extends Controller{
             if(count($error) > 0){
                 $msg    = $error;
                 $model  = $this->loadModel($this->_model);
-                $gambar = $model->searcharmada($id);
+                $gambar = $model->searchwisata($id);
                 require 'application/templates/admin/header.html';
-                require 'application/views/admin/armada/editarmada.html';
+                require 'application/views/admin/kotawisata/editkotawisata.html';
                 require 'application/templates/admin/footer.html';
             }
             else{
                 $model   = $this->loadModel($this->_model);
                 if(!empty($images)){
-                $gambar  = $model->searcharmada($id);
+                $gambar  = $model->searchwisata($id);
                 if (file_exists($dir . $gambar->gambar)) {
                         unlink($dir . $gambar->gambar);}
                 $move_gambar = $dir . basename($newfile);
-                move_uploaded_file($_FILES['file_gambar']['tmp_name'], $move_gambar);        
-                $saveeditarmada = $model->updatearmadaall($armada, $newfile, $link, $id);
-                $this->redirect('admin/armada');
+                move_uploaded_file($_FILES['file_gambar']['tmp_name'], $move_gambar); 
+//                updatekotawisataall($kotawisata, $gambar, $link, $id_kotawisata)
+                $saveeditarmada = $model->updatekotawisataall($kotawisata, $newfile, $link, $id);
+                $this->redirect('admin/kotawisata');
                 }
                 else{
-                $saveeditarmada = $model->updatearmada($armada,$link, $id);
-                $this->redirect('admin/armada');
+                $saveeditarmada = $model->updatekotawisata($kotawisata,$link, $id);
+                $this->redirect('admin/kotawisata');
                 }
             }
         }

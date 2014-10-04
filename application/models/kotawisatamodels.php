@@ -47,15 +47,15 @@ class kotawisatamodels extends Models {
     public function updatekotawisataall($kotawisata, $gambar, $link, $id_kotawisata) {
         $sql = "UPDATE {$this->table} SET kotawisata = ? , gambar = ? ,link = ? WHERE id_kotawisata = ?";
         $query = $this->db->prepare($sql);
-        $query->execute(array($armada, $gambar, $link, $id_armada));
+        $query->execute(array($kotawisata, $gambar, $link, $id_kotawisata));
         
     }
 
     //update tampa gambar
     public function updatekotawisata($kotawisata,$link, $id) {
-        $sql = "UPDATE {$this->table} SET armada = ? ,link = ? WHERE id_kotawisata = ?";
+        $sql = "UPDATE {$this->table} SET kotawisata = ? ,link = ? WHERE id_kotawisata = ?";
         $query = $this->db->prepare($sql);
-        $query->execute(array($armada,$link, $id));
+        $query->execute(array($kotawisata,$link, $id));
     }
 
 }
