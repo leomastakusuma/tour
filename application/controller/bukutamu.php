@@ -47,6 +47,7 @@ class bukutamu extends Controller{
             else {
                 $model  = $this->loadModel($this->_model);
                 $simpan = $model->save($nama,$email,$komentar,$tanggal);
+                $this->redirect('bukutamu');
             }
          
         }
