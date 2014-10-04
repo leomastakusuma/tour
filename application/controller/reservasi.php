@@ -16,7 +16,7 @@ class reservasi extends Controller{
     private $_model         = 'reservasimodels';
     private $_modelorder    = 'ordermodels';
     public function index(){
-        require 'application/templates/header-page.html';
+        require_once 'application/templates/header.html';
         require 'application/templates/menu.html';
         $model  = $this->loadModel($this->_model);
         $getall=$model->getall();
@@ -31,7 +31,7 @@ class reservasi extends Controller{
             $model = $this->loadModel($this->_model);
             $getall=$model->searchreservasi($idreservasi);
         
-            require 'application/templates/header-page.html';
+            require_once 'application/templates/header.html';
             require 'application/templates/menu.html'; 
             require 'application/views/reservasi/order.html';
             require 'application/templates/footer.php';
@@ -74,7 +74,7 @@ class reservasi extends Controller{
             if(count($error) > 0){
                 $msg     = $error;            
                 $getall  = $modelreservasi->searchreservasi($id_reservasi);
-                require 'application/templates/header-page.html';
+                require_once 'application/templates/header.html';
                 require 'application/templates/menu.html'; 
                 require 'application/views/reservasi/order.html';
                 require 'application/templates/footer.php';

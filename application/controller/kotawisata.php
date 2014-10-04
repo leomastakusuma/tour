@@ -15,6 +15,8 @@ class Kotawisata extends Controller{
     public function index(){
         require_once 'application/templates/header.html';
         require_once 'application/templates/menu.html';
+        $model  = $this->loadModel($this->_model);
+        $getall = $model->getall();
         require_once 'application/views/kotawisata/index.html';
         require_once 'application/templates/footer.php';  
     }
