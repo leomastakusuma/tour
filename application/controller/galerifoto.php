@@ -67,11 +67,35 @@ class galerifoto extends Controller{
 
             if($eventx < 10)
             {
-                $error[] = 'Event Tidak Boleh Kosong, Minila 10 karakter';
+                $error[] = 'Event Tidak Boleh Kosong, Minimal 10 karakter';
             }
 
             if(empty($images1) && empty($images2) && empty($images3) && empty($images4)){
                 $error[] = 'Silahkan Masukan Gambar Minimal 1';
+            }
+            if(!empty($images1)){
+                $extfile = strtolower(substr($_FILES["file_gambar1"]["name"], -3));
+                if($extfile != 'jpg'){
+                $error[] = 'Format Gambar Ke 1, Salah. Hanya Ekstensi *.jpg yang diizinkan';
+                }
+            }
+            if(!empty($images2)){
+                $extfile = strtolower(substr($_FILES["file_gambar2"]["name"], -3));
+                if($extfile != 'jpg'){
+                $error[] = 'Format Gambar Ke 2, Salah. Hanya Ekstensi *.jpg yang diizinkan';
+                }
+            }
+            if(!empty($images3)){
+                $extfile = strtolower(substr($_FILES["file_gambar3"]["name"], -3));
+                if($extfile != 'jpg'){
+                $error[] = 'Format Gambar Ke 3, Salah. Hanya Ekstensi *.jpg yang diizinkan';
+                }
+            }
+            if(!empty($images4)){
+                $extfile = strtolower(substr($_FILES["file_gambar4"]["name"], -3));
+                if($extfile != 'jpg'){
+                $error[] = 'Format Gambar Ke 4, Salah. Hanya Ekstensi *.jpg yang diizinkan';
+                }
             }
             //cek error
             if(count($error) > 0){
