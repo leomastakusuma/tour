@@ -541,7 +541,9 @@ class admin extends Controller {
     }
 
     public function saveeditgalery() {
-        
+        require 'application/controller/galerifoto.php';
+        $edit = new galerifoto;
+        $edit->editgalery();
     }
 
     public function deletegalery() {

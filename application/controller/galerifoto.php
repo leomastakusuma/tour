@@ -148,6 +148,18 @@ class galerifoto extends Controller{
     }
     
     public function editgalery(){
+        echo '<pre>';
+        print_r($_POST);
+        $images = $_FILES['file_gambar']['name'];
+        foreach($images as $id=>$img):
+            if($img !=null){
+                $extfile = strtolower(substr($img, -3));
+                if($extfile != 'jpg'){
+                    $data ='Format Gambar Tidak Sesuai Hanya Ekstensi *.jpg ';
+                }
+               
+            }
+        endforeach;
         
     }
    
