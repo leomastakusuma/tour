@@ -24,6 +24,13 @@ class galerymodels extends Models{
      
     }
     
+    public function searchgalery($id) {
+        $sql = "SELECT * from {$this->table} WHERE id_galery= {$id}";
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetch();
+    }
+    
     public function deletegalery($id) {
         $sql = "DELETE FROM {$this->table} ";
         $sql .= " WHERE id_armada = {$id}";

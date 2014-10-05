@@ -533,13 +533,18 @@ class admin extends Controller {
         $galery = new galerifoto();
         $galery->savegalery();
     }
+    
+    public function editgalery($id){
+        require 'application/controller/galerifoto.php';
+        $galery = new galerifoto;
+        $galery->searchid($id);
+    }
 
     public function saveeditgalery() {
         
     }
 
     public function deletegalery() {
-        
     }
 
 }

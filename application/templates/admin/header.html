@@ -190,7 +190,7 @@ $getuserinfo    = $modeluser->getuserinfo();
                     <?php endif;?>
                     
                     <?php $active6 = '<li>'?>
-                    <?php if($value == 'admin/galery'):?>
+                    <?php if(($value == 'admin/galery') || (($value == 'admin/galerynew'))):?>
                     <?php $active6 = "<li class='active'>"?>
                     <?php endif;?>
                     
@@ -224,10 +224,10 @@ $getuserinfo    = $modeluser->getuserinfo();
                         <a href="javascript:;" data-toggle="collapse" data-target="#galery"><i class="fa fa-fw fa-won"></i> Galery</a>
                         <ul id="galery" class="collapse">
                         <li>
-                            <a href="<?php echo URL?>admin/#">Input Galery</a>
+                            <a href="<?php echo URL?>admin/galerynew">Input Galery</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL?>admin/#">Data Galery</a>
+                            <a href="<?php echo URL?>admin/galery">Data Galery</a>
                         </li>
                         </ul>
                     </li>

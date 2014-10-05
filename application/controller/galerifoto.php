@@ -17,10 +17,12 @@ class galerifoto extends Controller{
         require_once 'application/templates/footer.php';  
     }
     public function getall(){
+        require 'application/templates/admin/header.html';
         $model  = $this->loadModel($this->model);
         $getall = $model->getall();
-        echo '<pre>';
-        print_r($getall);   
+        require 'application/views/admin/galery/datagalery.html';
+        require 'application/templates/admin/footer.html';
+      
     }
     public function savegalery(){
         $form     = $_POST;
@@ -33,6 +35,8 @@ class galerifoto extends Controller{
         $images3  = $_FILES['file_gambar3']['name'];
         $images4  = $_FILES['file_gambar4']['name'];
         $random   = rand(0000,9999);
+        $path       = getcwd(); //path on  root directory web
+        $dir        = $path . '/public/images/';
         $newfile1 = $random.$images1;
         $newfile2 = $random.$images2;
         $newfile3 = $random.$images3;
@@ -106,19 +110,44 @@ class galerifoto extends Controller{
             }
             //simpan database
             else{
+                //uploadfile
+                $move_gambar = $dir . basename($newfile1);
+                move_uploaded_file($_FILES['file_gambar1']['tmp_name'], $move_gambar);
+                
+                $move_gambar1 = $dir . basename($newfile2);
+                move_uploaded_file($_FILES['file_gambar2']['tmp_name'], $move_gambar1);
+                
+                $move_gambar2 = $dir . basename($newfile3);
+                move_uploaded_file($_FILES['file_gambar3']['tmp_name'], $move_gambar2);
+                
+                $move_gambar3 = $dir . basename($newfile4);
+                move_uploaded_file($_FILES['file_gambar4']['tmp_name'], $move_gambar3);
+                
+                
+                
                 $model = $this->loadModel($this->model);
                 $save  = $model->savegalery($tanggal,$judul,$event,$gambarsave);
                 $this->redirect('admin/galery');
                 
             }
             
-        }        
+        }            
         
-        //validasi gambar
-//        
+    }
+    
+    public function searchid($id){
+        if(isset($id)){
+            $model      = $this->loadModel($this->model);
+            $galery = $model->searchgalery($id);
+            require 'application/templates/admin/header.html';
+            require 'application/views/admin/galery/editgalery.html';
+            require 'application/templates/admin/footer.html';
+                    
+        }
         
-        //validasi error
-       
+    }
+    
+    public function editgalery(){
         
     }
    
