@@ -23,14 +23,78 @@ class galerifoto extends Controller{
         print_r($getall);   
     }
     public function savegalery(){
-        $form = $_POST;
-        $images ['nama']   = $_FILES['file_gambar']['name'];
-        echo '<pre>';
-        print_r($images);
-        foreach ($images as $img){
+        $form     = $_POST;
+        $tanggal  = date('Y-m-d H-i-s');
+        $judul    = $form['judul'];
+        $event    = $form['event'];
+        $eventx   = strlen($event);
+        $images1  = $_FILES['file_gambar1']['name'];
+        $images2  = $_FILES['file_gambar2']['name'];
+        $images3  = $_FILES['file_gambar3']['name'];
+        $images4  = $_FILES['file_gambar4']['name'];
+        $random   = rand(0000,9999);
+        $newfile1 = $random.$images1;
+        $newfile2 = $random.$images2;
+        $newfile3 = $random.$images3;
+        $newfile4 = $random.$images4;
+        
+        //validasi gambar 
+            $gambar=array();
+            if(!empty($images1)){
+            $gambar[] = $newfile1;
+            }
+            if(!empty($images2)){
+            $gambar[] = $newfile2;
+            }
+            if(!empty($images3)){
+            $gambar[] = $newfile3;
+            }
+            if(!empty($images4)){
+            $gambar[] = $newfile4;
+            }
+            if(count($gambar)> 0){
+              $data = $gambar;
+            }
+         $gambarsave=implode(',', $data);
+//        $exlpode = explode(',', $nama);
+        
+        //validasi input
+        $error = array();
+        if(!empty($form)){
+            if(empty($judul)){
+                $error[] = 'Judul Tidak Boleh Kosong';
+            }
+
+            if($eventx < 10)
+            {
+                $error[] = 'Event Tidak Boleh Kosong, Minila 10 karakter';
+            }
+
+            if(empty($images1) && empty($images2) && empty($images3) && empty($images4)){
+                $error[] = 'Silahkan Masukan Gambar Minimal 1';
+            }
+            //cek error
+            if(count($error) > 0){
+                $msg = $error;
+                require 'application/templates/admin/header.html';
+                require 'application/views/admin/galery/index.html';
+                require 'application/templates/admin/footer.html';
+            }
+            //simpan database
+            else{
+                $model = $this->loadModel($this->model);
+                $save  = $model->savegalery($tanggal,$judul,$event,$gambarsave);
+                $this->redirect('admin/galery');
+                
+            }
             
-            echo $data = $img;
-        }
+        }        
+        
+        //validasi gambar
+//        
+        
+        //validasi error
+       
         
     }
    

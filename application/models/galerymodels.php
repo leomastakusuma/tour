@@ -10,10 +10,20 @@ class galerymodels extends Models{
         return $sql->fetchAll();		
     }
 
-    public function save(){
-
-    } 
-
+   public function savegalery($tanggal,$judul,$event,$gambar) {
+        $data = array(':tgl_create' => $tanggal,
+                      ':judul'      => $judul,
+                      ':event'      => $event,
+                      ':gambar'     => $gambar
+        );
+        $sql = "INSERT INTO {$this->table}";
+        $sql .= " (tgl_create , judul, event, gambar)";
+        $sql .= " VALUES ( :tgl_create, :judul, :event,  :gambar)";
+        $query = $this->db->prepare($sql);      
+        $query->execute($data);
+     
+    }
+    
     public function deletegalery($id) {
         $sql = "DELETE FROM {$this->table} ";
         $sql .= " WHERE id_armada = {$id}";
