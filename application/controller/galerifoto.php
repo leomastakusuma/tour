@@ -148,21 +148,46 @@ class galerifoto extends Controller{
     }
     
     public function editgalery(){
-        echo '<pre>';
-        print_r($_POST);
+     
+        $form   = $_POST;
+        $id     = $form['id'];
+       
+//        $judul  = $form['judul'];
+//        $event  = $form['event'];
+        extract($_POST);
         $images = $_FILES['file_gambar']['name'];
+        
         foreach($images as $id=>$img):
             if($img !=null){
                 $extfile = strtolower(substr($img, -3));
                 if($extfile != 'jpg'){
-                    $data ='Format Gambar Tidak Sesuai Hanya Ekstensi *.jpg ';
-                }
-               
+                    $data[] ='Format Gambar Tidak Sesuai Hanya Ekstensi ke  *.jpg ';
+                }                        
             }
         endforeach;
+        if(empty($judul)){
+                    $data[] = 'Judul Tidak Boleh Kosong';
+                }
+                if(strlen($event) <10)
+                {
+                    $data[] = 'Event Tidak Boleh Kosong, Minila 10 Karakter';
+                }     
+        if(count($data) > 0){
+            $msg = $data;
+            $id  = $_POST['id'];
+            $model      = $this->loadModel($this->model);
+            $gambarx = $model->searchgalery($id);
+            require 'application/templates/admin/header.html';
+            require 'application/views/admin/galery/editgalery.html';
+            require 'application/templates/admin/footer.html';
+        }
+        else{
+            echo 'a';
+        }
+        
         
     }
-   
+    
 
     
 
