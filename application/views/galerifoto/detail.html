@@ -13,17 +13,20 @@
                     <br>
                     <?php $imp = explode(',',$galery->gambar);?>
                     <?php if(count($imp)>1):?>
-                    <div class='col-md-10 column'>
+                    <div class="col-md-4">
+                    <div class="thumbnail"> 
                     <?php foreach($imp as $key):?>
                     <img alt="300x200" src="<?php echo URL .'public/images/'.$key?>" class="img-rounded" width="100%"></p>                                       
                     <?php endforeach;?>
                     </div>
+                    </div>
                     <?php else :?>
                     <img src="<?php echo URL .'public/images/'.$galery->gambar?>" alt="IMAGE" class="img-rounded" width='80%'>  
                     <?php endif?>
-                    <p class="text-justify"><?php echo $galery->event?></p>
-                          
-                    <!--<a href="<?php echo URL ?>" class="btn btn-success active btn-xs" type="button">Kembali &raquo</a><span class="label label-default"></span><span class="label label-default"></span> <br /> <br /> <br /><hr>-->                   
+                    <div class="panel-default">
+                        </br>
+                    <p class="text-justify"><?php echo $galery->event?></p>  
+                    </div>
                  </div> 
             </div>
         </div>				
