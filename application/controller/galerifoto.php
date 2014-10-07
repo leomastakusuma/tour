@@ -156,9 +156,15 @@ class galerifoto extends Controller{
 //        $event  = $form['event'];
         extract($_POST);
         $images = $_FILES['file_gambar']['name'];
+        $random   = rand(0000,9999);
+        $path       = getcwd(); //path on  root directory web
+        $dir        = $path . '/public/images/';
+        
+        $data=array();
         
         foreach($images as $id=>$img):
             if($img !=null){
+//                $imagesx  = null;
                 $extfile = strtolower(substr($img, -3));
                 if($extfile != 'jpg'){
                     $data[] ='Format Gambar Tidak Sesuai Hanya Ekstensi ke  *.jpg ';
@@ -182,7 +188,38 @@ class galerifoto extends Controller{
             require 'application/templates/admin/footer.html';
         }
         else{
-            echo 'a';
+            $model = $this->loadModel($this->model);
+            $id  = $_POST['id'];
+           
+            $_key=array();
+            foreach ($images as $idx=>$key){
+                if($key !=null){
+                    $_key[] =  $random.$key;
+                    $move   =  $random.$key;
+                    $move_gambar = $dir . basename($move);
+//                    echo $move_gambar;
+                    foreach($_FILES['file_gambar']['tmp_name'] as $key=> $tmp_name)  :
+                        move_uploaded_file($_FILES['file_gambar']['tmp_name'][$idx], $move_gambar);
+                    endforeach;                  
+                    
+                }
+            }        
+          
+            if(count($_key)>0){
+                $newfile =implode(',', $_key);
+                $save    =$model->updategaleryall($judul,$event,$newfile, $id);
+                $this->redirect('admin/galery');
+            }
+            else{
+                foreach ($images as $imgx):  
+                if($imgx ==NULL){
+                   $save  = $model->updategalery($judul,$event, $id);
+                   $this->redirect('admin/galery');
+                }
+                endforeach;
+            }
+           
+           
         }
         
         

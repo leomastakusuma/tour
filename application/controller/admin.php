@@ -20,6 +20,7 @@ class admin extends Controller {
     private $modeluser = 'usermodels';
     private $modelarmada = 'armadamodels';
     private $modelwisata = 'kotawisatamodels';
+    private $modelgalery = 'galerymodels';
 
     public function __construct() {
         parent::__construct();
@@ -546,7 +547,12 @@ class admin extends Controller {
         $edit->editgalery();
     }
 
-    public function deletegalery() {
+    public function deletegalery($id) {
+        if(isset($id)){
+            $model  = $this->loadModel($this->modelgalery);
+            $delete = $model->deletegalery($id);
+            $this->redirect('admin/galery');
+        }
     }
 
 }

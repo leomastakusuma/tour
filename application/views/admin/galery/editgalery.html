@@ -72,8 +72,12 @@
                             <?php $images =$dir . '/public/images/';?>
                             <?php foreach($gambar as $id=>$row):?>
                             <img src="<?php echo URL .'public/images/'.$row?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
-                             <input type="file" id="file_gambar1" name="file_gambar[]">
+                            <input type="file" id="file_gambar1" name="file_gambar[]">
                             <?php endforeach;?>
+                            <?php $file = count($gambar)?>
+                            <?php for($u=$file;$u<=3;$u++):?>
+                            <input type="file" id="file_gambar1" name="file_gambar[]">
+                            <?php endfor;?>
                             </div>
                             </div>                        
                                          
@@ -115,8 +119,12 @@
                             <?php $images =$dir . '/public/images/';?>
                             <?php foreach($gambar as $id=>$row):?>
                             <img src="<?php echo URL .'public/images/'.$row?>" alt="IMAGE" class="img-rounded" width='40%'></p>  
-                             <input type="file" id="file_gambar1" name="file_gambar[]">
+                            <input type="file" id="file_gambar1" name="file_gambar[]">
                             <?php endforeach;?>
+                            <?php $file = count($gambar)?>
+                            <?php for($u=$file;$u<=3;$u++):?>
+                            <input type="file" id="file_gambar1" name="file_gambar[]">
+                            <?php endfor;?>
                             </div>
                             </div>     
                             
