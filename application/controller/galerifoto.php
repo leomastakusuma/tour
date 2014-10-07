@@ -13,6 +13,8 @@ class galerifoto extends Controller{
     public function index(){
         require_once 'application/templates/header.html';
         require_once 'application/templates/menu.html';
+        $model  = $this->loadModel($this->model);
+        $getall = $model->getall();
         require_once 'application/views/galerifoto/index.html';
         require_once 'application/templates/footer.php';  
     }
@@ -24,7 +26,22 @@ class galerifoto extends Controller{
         require 'application/templates/admin/footer.html';
       
     }
-    public function savegalery(){
+   
+    public function detail($id){
+        if(isset($id)){
+            require_once 'application/templates/header.html';
+            require_once 'application/templates/menu.html';
+            $model  = $this->loadModel($this->model);
+            $galery = $model->searchgalery($id);
+//            print_r($galery);die;
+            require 'application/views/galerifoto/detail.html';
+            require_once 'application/templates/footer.php';  
+                    
+        }
+        
+    }
+
+        public function savegalery(){
         $form     = $_POST;
         $tanggal  = date('Y-m-d H-i-s');
         $judul    = $form['judul'];
